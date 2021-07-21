@@ -114,7 +114,7 @@
     },
     {
       "name": "graphql",
-      "image": "uscictdocker/mentor-graphql:4.1.0-alpha.11",
+      "image": "uscictdocker/mentor-graphql:4.2.0-alpha.1",
       "essential": true,
       "memory": 256,
       "mountPoints": [

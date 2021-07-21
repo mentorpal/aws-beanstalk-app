@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: uscictdocker/mentor-graphql:4.1.0-alpha.11
+    image: uscictdocker/mentor-graphql:4.2.0-alpha.1
     environment:
       - NODE_ENV
       - MONGO_URI
