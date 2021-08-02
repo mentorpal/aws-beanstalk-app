@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "uscictdocker/mentor-admin:4.2.0-alpha.24",
+      "image": "uscictdocker/mentor-admin:4.2.0-alpha.32",
       "essential": true,
       "memory": 128,
       "mountPoints": [
