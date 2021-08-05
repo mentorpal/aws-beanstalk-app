@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: uscictdocker/mentor-admin:4.2.0-alpha.33
+    image: uscictdocker/mentor-admin:4.2.0-alpha.34
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
