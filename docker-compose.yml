@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: uscictdocker/mentor-client:4.2.0-alpha.3
+    image: uscictdocker/mentor-client:4.2.0-alpha.6
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
