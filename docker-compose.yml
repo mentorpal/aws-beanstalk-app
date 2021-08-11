@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: uscictdocker/mentor-admin:4.2.0-alpha.40
+    image: uscictdocker/mentor-admin:4.2.0-alpha.43
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: uscictdocker/mentor-graphql:4.2.0-alpha.8
+    image: uscictdocker/mentor-graphql:4.2.0-alpha.10
     environment:
       - NODE_ENV
       - MONGO_URI
@@ -100,7 +100,7 @@ services:
     # pub/sub instances share a redis via celery
     image: 'redis:6-alpine'
   upload-api:
-    image: uscictdocker/mentor-upload-api:4.2.0-alpha.7
+    image: uscictdocker/mentor-upload-api:4.2.0-alpha.8
     depends_on:
       - upload-redis
     environment:
@@ -116,7 +116,7 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: uscictdocker/mentor-upload-worker:4.2.0-alpha.7
+    image: uscictdocker/mentor-upload-worker:4.2.0-alpha.8
     depends_on:
       - graphql
       - redis
