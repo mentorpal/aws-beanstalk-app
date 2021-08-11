@@ -12,7 +12,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   classifier:
-    image: uscictdocker/mentor-classifier-api:4.2.0-alpha.5
+    image: uscictdocker/mentor-classifier-api:4.2.0-alpha.7
     depends_on:
       - redis
     links:
@@ -72,7 +72,7 @@ services:
   redis:
     image: 'redis:6-alpine'
   training:
-    image: uscictdocker/mentor-classifier:4.2.0-alpha.5
+    image: uscictdocker/mentor-classifier:4.2.0-alpha.7
     depends_on:
       - graphql
       - redis
