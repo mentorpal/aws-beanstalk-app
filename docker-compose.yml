@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: uscictdocker/mentor-client:4.2.0-alpha.8
+    image: uscictdocker/mentor-client:4.2.0-alpha.9
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: uscictdocker/mentor-graphql:4.2.0-alpha.10
+    image: uscictdocker/mentor-graphql:4.2.0-alpha.11
     environment:
       - NODE_ENV
       - MONGO_URI
@@ -100,7 +100,7 @@ services:
     # pub/sub instances share a redis via celery
     image: 'redis:6-alpine'
   upload-api:
-    image: uscictdocker/mentor-upload-api:4.2.0-alpha.8
+    image: uscictdocker/mentor-upload-api:4.2.0-alpha.9
     depends_on:
       - upload-redis
     environment:
@@ -116,7 +116,7 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: uscictdocker/mentor-upload-worker:4.2.0-alpha.8
+    image: uscictdocker/mentor-upload-worker:4.2.0-alpha.9
     depends_on:
       - graphql
       - redis
