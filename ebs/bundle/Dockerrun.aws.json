@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "uscictdocker/mentor-admin:4.2.0-alpha.43",
+      "image": "uscictdocker/mentor-admin:4.2.0-alpha.46",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -114,7 +114,7 @@
     },
     {
       "name": "graphql",
-      "image": "uscictdocker/mentor-graphql:4.2.0-alpha.11",
+      "image": "uscictdocker/mentor-graphql:4.2.0-alpha.12",
       "essential": true,
       "memory": 256,
       "mountPoints": [

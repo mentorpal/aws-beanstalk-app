@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: uscictdocker/mentor-admin:4.2.0-alpha.43
+    image: uscictdocker/mentor-admin:4.2.0-alpha.46
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: uscictdocker/mentor-graphql:4.2.0-alpha.11
+    image: uscictdocker/mentor-graphql:4.2.0-alpha.12
     environment:
       - NODE_ENV
       - MONGO_URI
