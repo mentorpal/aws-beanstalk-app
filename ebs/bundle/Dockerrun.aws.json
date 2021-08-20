@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "uscictdocker/mentor-admin:4.2.0-alpha.48",
+      "image": "uscictdocker/mentor-admin:4.2.0-alpha.49",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -77,7 +77,7 @@
     },
     {
       "name": "classifier",
-      "image": "uscictdocker/mentor-classifier-api:4.2.0-alpha.7",
+      "image": "uscictdocker/mentor-classifier-api:4.2.0-alpha.12",
       "environment": [
         {
           "name": "CLASSIFIER_ARCH",
@@ -166,7 +166,7 @@
     },
     {
       "name": "training",
-      "image": "uscictdocker/mentor-classifier:4.2.0-alpha.7",
+      "image": "uscictdocker/mentor-classifier:4.2.0-alpha.12",
       "entryPoint": ["/app/training_worker.sh"],
       "environment": [
         {
