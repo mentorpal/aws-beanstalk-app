@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "uscictdocker/mentor-admin:4.2.0-alpha.49",
+      "image": "mentorpal/mentor-admin:4.2.0-alpha.50",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -59,7 +59,7 @@
     },
     {
       "name": "chat",
-      "image": "uscictdocker/mentor-client:4.2.0-alpha.10",
+      "image": "mentorpal/mentor-client:4.2.0-alpha.13",
       "essential": true,
       "memory": 128,
       "mountPoints": [
