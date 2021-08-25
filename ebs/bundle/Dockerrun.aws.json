@@ -41,9 +41,9 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "uscictdocker/mentor-admin:4.0.0",
+      "image": "mentorpal/mentor-admin:4.2.0",
       "essential": true,
-      "memory": 256,
+      "memory": 128,
       "mountPoints": [
         {
           "sourceVolume": "awseb-logs-admin",
@@ -59,9 +59,9 @@
     },
     {
       "name": "chat",
-      "image": "uscictdocker/mentor-client:4.0.0",
+      "image": "mentorpal/mentor-client:4.2.0",
       "essential": true,
-      "memory": 256,
+      "memory": 128,
       "mountPoints": [
         {
           "sourceVolume": "awseb-logs-chat",
@@ -77,20 +77,24 @@
     },
     {
       "name": "classifier",
-      "image": "uscictdocker/mentor-classifier-api:4.0.0",
+      "image": "mentorpal/mentor-classifier-api:4.2.0",
       "environment": [
         {
-          "name": "STATUS_URL_FORCE_HTTPS",
-          "value": "true"
+          "name": "CLASSIFIER_ARCH",
+          "value": "mentor_classifier.arch.lr_transformer"
         },
         {
           "name": "GRAPHQL_ENDPOINT",
           "value": "http://graphql:3001/graphql"
+        },
+        {
+          "name": "STATUS_URL_FORCE_HTTPS",
+          "value": "true"
         }
       ],
       "essential": true,
       "links": ["graphql", "redis"],
-      "memory": 4096,
+      "memory": 4608,
       "mountPoints": [
         {
           "sourceVolume": "awseb-logs-classifier",
@@ -110,9 +114,9 @@
     },
     {
       "name": "graphql",
-      "image": "uscictdocker/mentor-graphql:4.0.0",
+      "image": "mentorpal/mentor-graphql:4.2.0",
       "essential": true,
-      "memory": 512,
+      "memory": 256,
       "mountPoints": [
         {
           "sourceVolume": "awseb-logs-graphql",
@@ -124,7 +128,7 @@
       "name": "nginx",
       "image": "nginx:1-alpine",
       "essential": true,
-      "memory": 256,
+      "memory": 128,
       "portMappings": [
         {
           "hostPort": 80,
@@ -158,13 +162,17 @@
       "name": "redis",
       "image": "redis:6-alpine",
       "essential": true,
-      "memory": 512
+      "memory": 128
     },
     {
       "name": "training",
-      "image": "uscictdocker/mentor-classifier:4.0.0",
+      "image": "mentorpal/mentor-classifier:4.2.0",
       "entryPoint": ["/app/training_worker.sh"],
       "environment": [
+        {
+          "name": "CLASSIFIER_ARCH",
+          "value": "mentor_classifier.arch.lr_transformer"
+        },
         {
           "name": "GRAPHQL_ENDPOINT",
           "value": "http://graphql:3001/graphql"
@@ -172,7 +180,7 @@
       ],
       "essential": true,
       "links": ["graphql", "redis"],
-      "memory": 2048,
+      "memory": 4608,
       "mountPoints": [
         {
           "sourceVolume": "awseb-logs-training",
@@ -193,11 +201,11 @@
       "name": "upload-redis",
       "image": "redis:6-alpine",
       "essential": true,
-      "memory": 512
+      "memory": 128
     },
     {
       "name": "upload-api",
-      "image": "uscictdocker/mentor-upload-api:4.0.0",
+      "image": "mentorpal/mentor-upload-api:4.2.0",
       "environment": [
         {
           "name": "STATUS_URL_FORCE_HTTPS",
@@ -213,7 +221,7 @@
         }
       ],
       "essential": true,
-      "links": ["upload-redis"],
+      "links": ["graphql", "upload-redis"],
       "memory": 2048,
       "mountPoints": [
         {
@@ -228,7 +236,7 @@
     },
     {
       "name": "upload-worker",
-      "image": "uscictdocker/mentor-upload-worker:4.0.0",
+      "image": "mentorpal/mentor-upload-worker:4.2.0",
       "environment": [
         {
           "name": "GRAPHQL_ENDPOINT",
@@ -245,7 +253,7 @@
       ],
       "essential": true,
       "links": ["graphql", "upload-redis"],
-      "memory": 4096,
+      "memory": 3072,
       "mountPoints": [
         {
           "sourceVolume": "awseb-logs-upload-worker",
