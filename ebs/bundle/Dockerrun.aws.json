@@ -77,7 +77,7 @@
     },
     {
       "name": "classifier",
-      "image": "mentorpal/mentor-classifier-api:4.2.0",
+      "image": "mentorpal/mentor-classifier-api:4.3.0-alpha.2",
       "environment": [
         {
           "name": "CLASSIFIER_ARCH",
@@ -166,7 +166,7 @@
     },
     {
       "name": "training",
-      "image": "mentorpal/mentor-classifier:4.2.0",
+      "image": "mentorpal/mentor-classifier:4.3.0-alpha.2",
       "entryPoint": ["/app/training_worker.sh"],
       "environment": [
         {
@@ -198,30 +198,16 @@
       ]
     },
     {
-      "name": "upload-redis",
-      "image": "redis:6-alpine",
-      "essential": true,
-      "memory": 128
-    },
-    {
       "name": "upload-api",
-      "image": "mentorpal/mentor-upload-api:4.2.0",
+      "image": "mentorpal/mentor-upload-api:4.3.0-alpha.1",
       "environment": [
         {
           "name": "STATUS_URL_FORCE_HTTPS",
           "value": "true"
-        },
-        {
-          "name": "CELERY_BROKER_URL",
-          "value": "redis://upload-redis:6379/0"
-        },
-        {
-          "name": "CELERY_RESULT_BACKEND",
-          "value": "redis://upload-redis:6379/0"
         }
       ],
       "essential": true,
-      "links": ["graphql", "upload-redis"],
+      "links": ["graphql", "redis"],
       "memory": 2048,
       "mountPoints": [
         {
@@ -236,23 +222,15 @@
     },
     {
       "name": "upload-worker",
-      "image": "mentorpal/mentor-upload-worker:4.2.0",
+      "image": "mentorpal/mentor-upload-worker:4.3.0-alpha.1",
       "environment": [
         {
           "name": "GRAPHQL_ENDPOINT",
           "value": "http://graphql:3001/graphql"
-        },
-        {
-          "name": "CELERY_BROKER_URL",
-          "value": "redis://upload-redis:6379/0"
-        },
-        {
-          "name": "CELERY_RESULT_BACKEND",
-          "value": "redis://upload-redis:6379/0"
         }
       ],
       "essential": true,
-      "links": ["graphql", "upload-redis"],
+      "links": ["graphql", "redis"],
       "memory": 3072,
       "mountPoints": [
         {

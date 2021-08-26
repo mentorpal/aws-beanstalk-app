@@ -12,7 +12,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   classifier:
-    image: mentorpal/mentor-classifier-api:4.2.0
+    image: mentorpal/mentor-classifier-api:4.3.0-alpha.2
     depends_on:
       - redis
     links:
@@ -72,7 +72,7 @@ services:
   redis:
     image: 'redis:6-alpine'
   training:
-    image: mentorpal/mentor-classifier:4.2.0
+    image: mentorpal/mentor-classifier:4.3.0-alpha.2
     depends_on:
       - graphql
       - redis
@@ -94,20 +94,12 @@ services:
         source: ./shared
         target: /app/shared
         read_only: true
-  upload-redis:
-    # this is a hack, need to figure out
-    # how to have multiple, independent
-    # pub/sub instances share a redis via celery
-    image: 'redis:6-alpine'
   upload-api:
-    image: mentorpal/mentor-upload-api:4.2.0
+    image: mentorpal/mentor-upload-api:4.3.0-alpha.1
     depends_on:
-      - upload-redis
-    environment:
-      - CELERY_BROKER_URL=redis://upload-redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://upload-redis:6379/0
+      - redis
     links:
-      - upload-redis
+      - redis
     volumes:
       - type: bind
         source: ./build/run/.env
@@ -116,13 +108,11 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: mentorpal/mentor-upload-worker:4.2.0
+    image: mentorpal/mentor-upload-worker:4.3.0-alpha.1
     depends_on:
       - graphql
       - redis
     environment:
-      - CELERY_BROKER_URL=redis://upload-redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://upload-redis:6379/0
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
       - TRANSCRIBE_MODULE_PATH=transcribe_aws
     links:
