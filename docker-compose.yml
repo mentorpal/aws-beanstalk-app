@@ -95,9 +95,12 @@ services:
         target: /app/shared
         read_only: true
   upload-api:
-    image: mentorpal/mentor-upload-api:4.3.0-alpha.1
+    image: mentorpal/mentor-upload-api:4.3.0-alpha.6
     depends_on:
       - redis
+    environment:
+      - UPLOAD_CELERY_BROKER_URL
+      - UPLOAD_QUEUE_NAME
     links:
       - redis
     volumes:
@@ -108,17 +111,22 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: mentorpal/mentor-upload-worker:4.3.0-alpha.1
+    image: mentorpal/mentor-upload-worker:4.3.0-alpha.6
     depends_on:
       - graphql
       - redis
     environment:
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
       - TRANSCRIBE_MODULE_PATH=transcribe_aws
+      - UPLOAD_CELERY_BROKER_URL
+      - UPLOAD_QUEUE_NAME
     links:
       - graphql
       - redis
     volumes:
+      - type: bind
+        source: /Users/kirschner/projects/mentor-upload/mentor_upload_worker/src/mentor_upload_tasks
+        target: /app/mentor_upload_tasks
       - type: bind
         source: ./build/run/.env
         target: /app/.env

@@ -199,7 +199,7 @@
     },
     {
       "name": "upload-api",
-      "image": "mentorpal/mentor-upload-api:4.3.0-alpha.1",
+      "image": "mentorpal/mentor-upload-api:4.3.0-alpha.6",
       "environment": [
         {
           "name": "STATUS_URL_FORCE_HTTPS",
@@ -222,7 +222,7 @@
     },
     {
       "name": "upload-worker",
-      "image": "mentorpal/mentor-upload-worker:4.3.0-alpha.1",
+      "image": "mentorpal/mentor-upload-worker:4.3.0-alpha.6",
       "environment": [
         {
           "name": "GRAPHQL_ENDPOINT",
