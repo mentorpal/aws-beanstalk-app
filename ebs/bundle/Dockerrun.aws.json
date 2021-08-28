@@ -77,7 +77,7 @@
     },
     {
       "name": "classifier",
-      "image": "mentorpal/mentor-classifier-api:4.3.0-alpha.2",
+      "image": "mentorpal/mentor-classifier-api:4.4.0-alpha.4",
       "environment": [
         {
           "name": "CLASSIFIER_ARCH",
@@ -93,7 +93,7 @@
         }
       ],
       "essential": true,
-      "links": ["graphql", "redis"],
+      "links": ["graphql"],
       "memory": 4608,
       "mountPoints": [
         {
@@ -159,14 +159,8 @@
       ]
     },
     {
-      "name": "redis",
-      "image": "redis:6-alpine",
-      "essential": true,
-      "memory": 128
-    },
-    {
       "name": "training",
-      "image": "mentorpal/mentor-classifier:4.3.0-alpha.2",
+      "image": "mentorpal/mentor-classifier:4.4.0-alpha.4",
       "entryPoint": ["/app/training_worker.sh"],
       "environment": [
         {
@@ -179,7 +173,7 @@
         }
       ],
       "essential": true,
-      "links": ["graphql", "redis"],
+      "links": ["graphql"],
       "memory": 4608,
       "mountPoints": [
         {
@@ -199,7 +193,7 @@
     },
     {
       "name": "upload-api",
-      "image": "mentorpal/mentor-upload-api:4.3.0-alpha.6",
+      "image": "mentorpal/mentor-upload-api:4.4.0-alpha.2",
       "environment": [
         {
           "name": "STATUS_URL_FORCE_HTTPS",
@@ -207,7 +201,7 @@
         }
       ],
       "essential": true,
-      "links": ["graphql", "redis"],
+      "links": ["graphql"],
       "memory": 2048,
       "mountPoints": [
         {
@@ -222,7 +216,7 @@
     },
     {
       "name": "upload-worker",
-      "image": "mentorpal/mentor-upload-worker:4.3.0-alpha.6",
+      "image": "mentorpal/mentor-upload-worker:4.4.0-alpha.2",
       "environment": [
         {
           "name": "GRAPHQL_ENDPOINT",
@@ -230,7 +224,7 @@
         }
       ],
       "essential": true,
-      "links": ["graphql", "redis"],
+      "links": ["graphql"],
       "memory": 3072,
       "mountPoints": [
         {
