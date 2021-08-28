@@ -57,6 +57,7 @@ fi
 
 if [[ "$cmd" == "publish" ]]; then
     git push origin refs/tags/${tag}
+    # TODO: when we publish, should we sync origin/main to the tag (at least by default)?
 elif [[ "$cmd" == "switch" ]]; then
     git reset --hard ${tag}
 fi

@@ -119,6 +119,48 @@ git push upstream <my_branch>
 ./version publish 3.1.0-alpha.3
 ```
 
+## Setting up clone for local development and site deployment
+
+1. Clone the site repository from github (e.g. careerfair.mentorpal.org-beanstalk-app)
+
+2. In terminal from root, run command: 
+```
+sh ./install.sh
+```
+
+3. Check and make sure that the upstream remote has been set with command:
+```
+git remote -v
+```
+Output should look something like this:
+```
+origin	https://github.com/mentorpal/careerfair.mentorpal.org-beanstalk-app.git (fetch) <== your local repository
+origin	https://github.com/mentorpal/careerfair.mentorpal.org-beanstalk-app.git (push)
+upstream	https://github.com/mentorpal/aws-beanstalk-app.git (fetch) <== upstream release repository
+upstream	https://github.com/mentorpal/aws-beanstalk-app.git (push)
+```
+
+4. (OPTIONAL) Create a local branch from the working upstream release branch
+   - Use ``git branch -a`` to see all available branches
+   - Make sure to create your release version branch from an **upstream** branch:
+```
+git checkout upstream/x.x.x-release -b x.x.x-release
+```
+
+5. (OPTIONAL) Running the app locally:
+
+Access the .env secrets file from ICT 1password (need access) for your site
+
+Copy the .env to env/test/.env
+
+6. Creating a release
+   - After committing and pushing changes, the changes will also be pushed to the upstream (check upstream from step 3)
+   - Go to upstream git repository and create a new release tag (releases => draft a new release)
+     - Give the tag a version number (x.x.x for final release or x.x.x-alpha.x for alpha release)
+     - If alpha release, check the "This is a pre-release" checkbox
+   - Publish the release
+   - In local site repository, run ``./version publish <tag>`` from root
+
 ## FAQ
 
 ### Why can't I just fork this repo for my site?
