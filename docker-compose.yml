@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.3.0-alpha.12
+    image: mentorpal/mentor-admin:4.3.0-alpha.14
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: mentorpal/mentor-client:4.2.0-alpha.17
+    image: mentorpal/mentor-client:4.2.0-alpha.21
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
