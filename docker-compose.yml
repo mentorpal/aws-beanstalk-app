@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: mentorpal/mentor-client:4.2.0-alpha.21
+    image: mentorpal/mentor-client:4.2.0-alpha.23
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
