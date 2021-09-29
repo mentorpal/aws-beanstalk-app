@@ -113,6 +113,24 @@
       ]
     },
     {
+      "name": "home",
+      "image": "mentorpal/mentor-home-page:4.4.0-alpha.1",
+      "essential": true,
+      "memory": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "awseb-logs-home",
+          "containerPath": "/var/log/node"
+        }
+      ],
+      "environment": [
+        {
+          "name": "GRAPHQL_ENDPOINT",
+          "value": "http://graphql:3001/graphql"
+        }
+      ]
+    },
+    {
       "name": "graphql",
       "image": "mentorpal/mentor-graphql:4.2.0-alpha.15",
       "essential": true,
@@ -135,7 +153,7 @@
           "containerPort": 80
         }
       ],
-      "links": ["admin", "classifier", "chat", "graphql", "upload-api"],
+      "links": ["admin", "classifier", "chat", "graphql", "home", "upload-api"],
       "mountPoints": [
         {
           "sourceVolume": "nginx-volume-www",

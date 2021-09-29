@@ -52,6 +52,14 @@ services:
       - type: bind
         source: ./build/run/.env
         target: /app/.env
+  home:
+    image: uscictdocker/mentor-home-page:4.4.0-alpha.2
+    depends_on:
+      - graphql
+    volumes:
+      - type: bind
+        source: ./build/run/.env
+        target: /app/.env
   nginx:
     image: nginx:1-alpine
     ports:
@@ -61,6 +69,7 @@ services:
       - chat
       - classifier
       - graphql
+      - home
       - upload-api
     volumes:
       - type: bind
