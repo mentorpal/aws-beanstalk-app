@@ -53,7 +53,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   home:
-    image: uscictdocker/mentor-home-page:4.4.0-alpha.3
+    image: uscictdocker/mentor-home-page:4.4.0-alpha.4
     depends_on:
       - graphql
     volumes:
