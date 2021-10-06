@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: mentorpal/mentor-client:4.2.0-alpha.26
+    image: mentorpal/mentor-client:4.3.0-alpha.27
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: mentorpal/mentor-graphql:4.2.0-alpha.15
+    image: mentorpal/mentor-graphql:4.3.0-alpha.16
     environment:
       - NODE_ENV
       - MONGO_URI
