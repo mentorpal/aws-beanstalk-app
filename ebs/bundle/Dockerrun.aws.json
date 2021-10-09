@@ -59,7 +59,7 @@
     },
     {
       "name": "chat",
-      "image": "mentorpal/mentor-client:4.3.0-alpha.29",
+      "image": "mentorpal/mentor-client:4.3.0-alpha.30",
       "essential": true,
       "memory": 128,
       "mountPoints": [
