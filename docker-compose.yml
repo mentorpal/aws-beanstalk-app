@@ -54,22 +54,13 @@ services:
         target: /app/.env
   home:
     image: uscictdocker/mentor-home-page:4.4.0-alpha.7
+    # image: uscictdocker/mentor-home-page:4.4.0-alpha.5
     depends_on:
       - graphql
     volumes:
       - type: bind
         source: ./build/run/.env
         target: /app/.env
-  lrs:
-    image: "uscictdocker/xapi-lrs-proxy:1.1.0"
-    environment:
-      # you will need to set the LRS_PASSWORD in host env
-      - LRS_ENDPOINT
-      - LRS_USERNAME
-      - LRS_PASSWORD
-      - XAPI_ACCOUNT_HOMEPAGE
-    expose:
-      - "3001"
   nginx:
     image: nginx:1-alpine
     ports:
@@ -81,7 +72,6 @@ services:
       - graphql
       - home
       - upload-api
-      - lrs
     volumes:
       - type: bind
         source: ./nginx/nginx.conf
