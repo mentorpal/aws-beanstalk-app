@@ -114,7 +114,7 @@
     },
     {
       "name": "home",
-      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.10",
+      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.12",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -132,7 +132,7 @@
     },
     {
       "name": "graphql",
-      "image": "mentorpal/mentor-graphql:4.3.0-alpha.21",
+      "image": "mentorpal/mentor-graphql:4.3.0-alpha.22",
       "essential": true,
       "memory": 256,
       "mountPoints": [
