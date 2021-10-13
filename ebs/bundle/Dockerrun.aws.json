@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "mentorpal/mentor-admin:4.3.0-alpha.20",
+      "image": "mentorpal/mentor-admin:4.3.0-alpha.19",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -59,7 +59,7 @@
     },
     {
       "name": "chat",
-      "image": "mentorpal/mentor-client:4.3.0-alpha.30",
+      "image": "mentorpal/mentor-client:4.3.0-alpha.31",
       "essential": true,
       "memory": 128,
       "mountPoints": [
