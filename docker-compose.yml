@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.3.0-alpha.22
+    image: mentorpal/mentor-admin:4.3.0-alpha.24
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -104,9 +104,11 @@ services:
         target: /app/shared
         read_only: true
   upload-api:
-    image: mentorpal/mentor-upload-api:4.4.0-alpha.5
+    image: mentorpal/mentor-upload-api:4.4.0-alpha.6
     depends_on:
       - redis
+    environment:
+      - UPLOAD_ROOT=/app/uploads
     links:
       - redis
     volumes:
@@ -117,7 +119,7 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: mentorpal/mentor-upload-worker:4.4.0-alpha.5
+    image: mentorpal/mentor-upload-worker:4.4.0-alpha.6
     depends_on:
       - graphql
       - redis
