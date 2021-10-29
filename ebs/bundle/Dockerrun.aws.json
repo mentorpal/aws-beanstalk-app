@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "mentorpal/mentor-admin:4.3.0-alpha.25",
+      "image": "mentorpal/mentor-admin:4.3.0-alpha.27",
       "essential": true,
       "memory": 128,
       "mountPoints": [
