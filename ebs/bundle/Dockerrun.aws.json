@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "mentorpal/mentor-admin:4.3.0-alpha.34",
+      "image": "mentorpal/mentor-admin:4.3.0-alpha.35",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -132,7 +132,7 @@
     },
     {
       "name": "graphql",
-      "image": "mentorpal/mentor-graphql:4.3.0-alpha.23",
+      "image": "mentorpal/mentor-graphql:4.3.0-alpha.24",
       "essential": true,
       "memory": 256,
       "mountPoints": [
@@ -217,7 +217,7 @@
     },
     {
       "name": "upload-api",
-      "image": "mentorpal/mentor-upload-api:4.4.0-alpha.8",
+      "image": "mentorpal/mentor-upload-api:4.4.0-alpha.9",
       "environment": [
         {
           "name": "STATUS_URL_FORCE_HTTPS",
@@ -244,7 +244,7 @@
     },
     {
       "name": "upload-worker",
-      "image": "mentorpal/mentor-upload-worker:4.4.0-alpha.8",
+      "image": "mentorpal/mentor-upload-worker:4.4.0-alpha.9",
       "environment": [
         {
           "name": "GRAPHQL_ENDPOINT",
