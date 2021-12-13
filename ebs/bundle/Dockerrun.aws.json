@@ -132,7 +132,7 @@
     },
     {
       "name": "graphql",
-      "image": "mentorpal/mentor-graphql:4.3.0-alpha.26",
+      "image": "mentorpal/mentor-graphql:4.3.0-alpha.27",
       "essential": true,
       "memory": 256,
       "mountPoints": [
