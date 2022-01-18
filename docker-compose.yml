@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: mentorpal/mentor-graphql:4.3.0-alpha.28
+    image: mentorpal/mentor-graphql:4.3.0-alpha.29
     environment:
       - NODE_ENV
       - MONGO_URI
