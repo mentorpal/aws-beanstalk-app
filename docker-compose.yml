@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.3.0-alpha.48
+    image: mentorpal/mentor-admin:4.3.0-alpha.49
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -53,7 +53,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   home:
-    image: uscictdocker/mentor-home-page:4.4.0-alpha.28
+    image: uscictdocker/mentor-home-page:4.4.0-alpha.30
     depends_on:
       - graphql
     volumes:

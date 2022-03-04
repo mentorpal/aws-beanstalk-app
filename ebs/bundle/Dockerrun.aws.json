@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "mentorpal/mentor-admin:4.3.0-alpha.48",
+      "image": "mentorpal/mentor-admin:4.3.0-alpha.49",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -114,7 +114,7 @@
     },
     {
       "name": "home",
-      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.28",
+      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.30",
       "essential": true,
       "memory": 128,
       "mountPoints": [
