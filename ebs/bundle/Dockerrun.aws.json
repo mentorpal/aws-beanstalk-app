@@ -114,7 +114,7 @@
     },
     {
       "name": "home",
-      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.30",
+      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.31",
       "essential": true,
       "memory": 128,
       "mountPoints": [
