@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.3.0-alpha.50
+    image: mentorpal/mentor-admin:4.3.0-alpha.51
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -12,7 +12,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   classifier:
-    image: mentorpal/mentor-classifier-api:4.5.1-alpha.5
+    image: mentorpal/mentor-classifier-api:4.5.1-alpha.10
     depends_on:
       - redis
     links:
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: mentorpal/mentor-graphql:4.3.0-alpha.41
+    image: mentorpal/mentor-graphql:4.3.0-alpha.42
     environment:
       - NODE_ENV
       - MONGO_URI
@@ -81,7 +81,7 @@ services:
   redis:
     image: 'redis:6-alpine'
   training:
-    image: mentorpal/mentor-classifier:4.5.1-alpha.5
+    image: mentorpal/mentor-classifier:4.5.1-alpha.10
     depends_on:
       - graphql
       - redis
