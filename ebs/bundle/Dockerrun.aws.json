@@ -59,7 +59,7 @@
     },
     {
       "name": "chat",
-      "image": "mentorpal/mentor-client:4.3.0-alpha.47",
+      "image": "mentorpal/mentor-client:4.3.0-alpha.48",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -114,7 +114,7 @@
     },
     {
       "name": "home",
-      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.31",
+      "image": "uscictdocker/mentor-home-page:4.4.0-alpha.32",
       "essential": true,
       "memory": 128,
       "mountPoints": [
