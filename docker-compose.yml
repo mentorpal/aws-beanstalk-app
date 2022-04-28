@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.3.0-alpha.58
+    image: mentorpal/mentor-admin:4.3.0-alpha.59
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -12,7 +12,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   classifier:
-    image: mentorpal/mentor-classifier-api:4.5.1-alpha.12
+    image: mentorpal/mentor-classifier-api:4.5.1-alpha.14
     depends_on:
       - redis
     links:
@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: mentorpal/mentor-client:4.3.0-alpha.54
+    image: mentorpal/mentor-client:4.3.0-alpha.55
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: mentorpal/mentor-graphql:4.3.0-alpha.44
+    image: mentorpal/mentor-graphql:4.3.0-alpha.45
     environment:
       - NODE_ENV
       - MONGO_URI
@@ -81,7 +81,7 @@ services:
   redis:
     image: 'redis:6-alpine'
   training:
-    image: mentorpal/mentor-classifier:4.5.1-alpha.12
+    image: mentorpal/mentor-classifier:4.5.1-alpha.14
     depends_on:
       - graphql
       - redis
@@ -104,7 +104,7 @@ services:
         target: /app/shared
         read_only: true
   upload-api:
-    image: mentorpal/mentor-upload-api:4.4.0-alpha.29
+    image: mentorpal/mentor-upload-api:4.4.0-alpha.30
     depends_on:
       - redis
     environment:
@@ -119,7 +119,7 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: mentorpal/mentor-upload-worker:4.4.0-alpha.29
+    image: mentorpal/mentor-upload-worker:4.4.0-alpha.30
     depends_on:
       - graphql
       - redis
