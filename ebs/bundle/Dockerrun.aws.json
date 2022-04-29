@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "mentorpal/mentor-admin:4.3.0-alpha.59",
+      "image": "mentorpal/mentor-admin:4.3.0-alpha.61",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -132,7 +132,7 @@
     },
     {
       "name": "graphql",
-      "image": "mentorpal/mentor-graphql:4.3.0-alpha.45",
+      "image": "mentorpal/mentor-graphql:4.3.0-alpha.46",
       "essential": true,
       "memory": 256,
       "mountPoints": [

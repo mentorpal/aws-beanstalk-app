@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.3.0-alpha.59
+    image: mentorpal/mentor-admin:4.3.0-alpha.61
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: mentorpal/mentor-graphql:4.3.0-alpha.45
+    image: mentorpal/mentor-graphql:4.3.0-alpha.46
     environment:
       - NODE_ENV
       - MONGO_URI
