@@ -41,7 +41,7 @@
   "containerDefinitions": [
     {
       "name": "admin",
-      "image": "mentorpal/mentor-admin:4.3.0-alpha.62",
+      "image": "mentorpal/mentor-admin:4.3.0-alpha.63",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -59,7 +59,7 @@
     },
     {
       "name": "chat",
-      "image": "mentorpal/mentor-client:4.3.0-alpha.56",
+      "image": "mentorpal/mentor-client:4.3.0-alpha.59",
       "essential": true,
       "memory": 128,
       "mountPoints": [
@@ -77,7 +77,7 @@
     },
     {
       "name": "classifier",
-      "image": "mentorpal/mentor-classifier-api:4.5.1-alpha.14",
+      "image": "mentorpal/mentor-classifier-api:4.5.1-alpha.15",
       "environment": [
         {
           "name": "CLASSIFIER_ARCH",
@@ -132,7 +132,7 @@
     },
     {
       "name": "graphql",
-      "image": "mentorpal/mentor-graphql:4.3.0-alpha.46",
+      "image": "mentorpal/mentor-graphql:4.3.0-alpha.47",
       "essential": true,
       "memory": 256,
       "mountPoints": [
@@ -184,7 +184,7 @@
     },
     {
       "name": "training",
-      "image": "mentorpal/mentor-classifier:4.5.1-alpha.14",
+      "image": "mentorpal/mentor-classifier:4.5.1-alpha.15",
       "entryPoint": ["/app/training_worker.sh"],
       "environment": [
         {
