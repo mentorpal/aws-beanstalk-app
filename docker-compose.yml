@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.3.0-alpha.66
+    image: mentorpal/mentor-admin:4.3.0-alpha.56
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -12,7 +12,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   classifier:
-    image: mentorpal/mentor-classifier-api:4.5.1-alpha.15
+    image: mentorpal/mentor-classifier-api:4.5.1-alpha.12
     depends_on:
       - redis
     links:
@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: mentorpal/mentor-client:4.3.0-alpha.63
+    image: mentorpal/mentor-client:4.3.0-alpha.54
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
@@ -44,7 +44,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: mentorpal/mentor-graphql:4.3.0-alpha.49
+    image: mentorpal/mentor-graphql:4.3.0-alpha.42
     environment:
       - NODE_ENV
       - MONGO_URI
@@ -53,7 +53,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   home:
-    image: uscictdocker/mentor-home-page:4.4.0-alpha.43
+    image: uscictdocker/mentor-home-page:4.4.0-alpha.40
     depends_on:
       - graphql
     volumes:
@@ -81,7 +81,7 @@ services:
   redis:
     image: 'redis:6-alpine'
   training:
-    image: mentorpal/mentor-classifier:4.5.1-alpha.15
+    image: mentorpal/mentor-classifier:4.5.1-alpha.12
     depends_on:
       - graphql
       - redis
@@ -104,7 +104,7 @@ services:
         target: /app/shared
         read_only: true
   upload-api:
-    image: mentorpal/mentor-upload-api:4.4.0-alpha.34
+    image: mentorpal/mentor-upload-api:4.4.0-alpha.27
     depends_on:
       - redis
     environment:
@@ -119,7 +119,7 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: mentorpal/mentor-upload-worker:4.4.0-alpha.34
+    image: mentorpal/mentor-upload-worker:4.4.0-alpha.27
     depends_on:
       - graphql
       - redis
