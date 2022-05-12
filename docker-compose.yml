@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: mentorpal/mentor-client:4.3.0-alpha.54
+    image: mentorpal/mentor-client:4.3.0-alpha.54.2
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
@@ -53,7 +53,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   home:
-    image: uscictdocker/mentor-home-page:4.4.0-alpha.40
+    image: uscictdocker/mentor-home-page:4.4.0-alpha.43
     depends_on:
       - graphql
     volumes:
