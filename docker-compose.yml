@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   admin:
-    image: mentorpal/mentor-admin:4.2.0
+    image: mentorpal/mentor-admin:4.3.0-alpha.66
     environment:
       - NODE_ENV
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
@@ -12,7 +12,7 @@ services:
         source: ./build/run/.env
         target: /app/.env
   classifier:
-    image: mentorpal/mentor-classifier-api:4.2.0
+    image: mentorpal/mentor-classifier-api:4.5.1-alpha.15
     depends_on:
       - redis
     links:
@@ -34,7 +34,7 @@ services:
         target: /app/shared
         read_only: true
   chat:
-    image: mentorpal/mentor-client:4.2.0
+    image: mentorpal/mentor-client:4.3.0-alpha.65
     environment:
       - MENTOR_API_URL=/classifier
     depends_on:
@@ -44,10 +44,18 @@ services:
         source: ./build/run/.env
         target: /app/.env
   graphql:
-    image: mentorpal/mentor-graphql:4.2.0
+    image: mentorpal/mentor-graphql:4.3.0-alpha.51
     environment:
       - NODE_ENV
       - MONGO_URI
+    volumes:
+      - type: bind
+        source: ./build/run/.env
+        target: /app/.env
+  home:
+    image: uscictdocker/mentor-home-page:4.4.0-alpha.43
+    depends_on:
+      - graphql
     volumes:
       - type: bind
         source: ./build/run/.env
@@ -61,6 +69,7 @@ services:
       - chat
       - classifier
       - graphql
+      - home
       - upload-api
     volumes:
       - type: bind
@@ -72,7 +81,7 @@ services:
   redis:
     image: 'redis:6-alpine'
   training:
-    image: mentorpal/mentor-classifier:4.2.0
+    image: mentorpal/mentor-classifier:4.5.1-alpha.15
     depends_on:
       - graphql
       - redis
@@ -94,20 +103,14 @@ services:
         source: ./shared
         target: /app/shared
         read_only: true
-  upload-redis:
-    # this is a hack, need to figure out
-    # how to have multiple, independent
-    # pub/sub instances share a redis via celery
-    image: 'redis:6-alpine'
   upload-api:
-    image: mentorpal/mentor-upload-api:4.2.0
+    image: mentorpal/mentor-upload-api:4.4.0-alpha.34
     depends_on:
-      - upload-redis
+      - redis
     environment:
-      - CELERY_BROKER_URL=redis://upload-redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://upload-redis:6379/0
+      - UPLOAD_ROOT=/app/uploads
     links:
-      - upload-redis
+      - redis
     volumes:
       - type: bind
         source: ./build/run/.env
@@ -116,13 +119,11 @@ services:
         source: ./uploads
         target: /app/uploads
   upload-worker:
-    image: mentorpal/mentor-upload-worker:4.2.0
+    image: mentorpal/mentor-upload-worker:4.4.0-alpha.34
     depends_on:
       - graphql
       - redis
     environment:
-      - CELERY_BROKER_URL=redis://upload-redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://upload-redis:6379/0
       - GRAPHQL_ENDPOINT=http://graphql:3001/graphql
       - TRANSCRIBE_MODULE_PATH=transcribe_aws
     links:
